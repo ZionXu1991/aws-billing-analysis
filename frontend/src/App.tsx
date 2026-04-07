@@ -15,11 +15,17 @@ import BillingAccountsPage from './pages/BillingAccountsPage';
 import BillingBudgetsPage from './pages/BillingBudgetsPage';
 import MarketOverviewPage from './pages/MarketOverviewPage';
 import CostAnalysisPage from './pages/CostAnalysisPage';
+import DevOpsPlatformCostDashboard from './pages/DevOpsPlatformCostDashboard';
 
 const { Sider, Content } = Layout;
 const { Title } = Typography;
 
 const menuItems = [
+  {
+    key: '/billing/platform-intel',
+    icon: <BarChartOutlined />,
+    label: 'Platform Intel',
+  },
   {
     key: '/billing/dashboard',
     icon: <DollarOutlined />,
@@ -84,13 +90,14 @@ const App: React.FC = () => {
         <Layout>
           <Content style={{ margin: 24, minHeight: 280 }}>
             <Routes>
+              <Route path="/billing/platform-intel" element={<DevOpsPlatformCostDashboard />} />
               <Route path="/billing/dashboard" element={<BillingDashboardPage />} />
               <Route path="/billing/markets" element={<MarketOverviewPage />} />
               <Route path="/billing/analysis" element={<CostAnalysisPage />} />
               <Route path="/billing/anomalies" element={<BillingAnomaliesPage />} />
               <Route path="/billing/accounts" element={<BillingAccountsPage />} />
               <Route path="/billing/budgets" element={<BillingBudgetsPage />} />
-              <Route path="*" element={<Navigate to="/billing/dashboard" replace />} />
+              <Route path="*" element={<Navigate to="/billing/platform-intel" replace />} />
             </Routes>
           </Content>
         </Layout>
